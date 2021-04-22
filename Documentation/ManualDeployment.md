@@ -1,4 +1,4 @@
-# <img src="https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/images/Parabricks%20Logo.png" width="200" height="200"> Runbook
+# <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/Parabricks%20Logo.png" width="200" height="200"> Runbook
 
 ## Deployment via web console
 
@@ -16,15 +16,15 @@
 You can start by logging in the Oracle Cloud console. If this is the first time, instructions to do so are available [here](https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/signingin.htm).
 Select the region in which you wish to create your instance. Click on the current region in the top right dropdown list to select another one. 
 
-<img src="https://github.com/oci-hpc/oci-hpc-runbook-shared/blob/master/images/Region.png" height="50">
+<img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/Region.png" height="50">
 
 ### Virtual Cloud Network
 Before creating an instance, we need to configure a Virtual Cloud Network. 
- 1. Select the menu <img src="https://github.com/oci-hpc/oci-hpc-runbook-shared/blob/master/images/menu.png" height="20"> on the top left, then select Networking --> Virtual Cloud Networks. Make sure to select your compartment on the lower left side 
+ 1. Select the menu <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-shared/blob/master/images/menu.png" height="20"> on the top left, then select Networking --> Virtual Cloud Networks. Make sure to select your compartment on the lower left side 
  
- <img src="https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/images/VCN%20Compartment.png" heigh="20">
+ <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/VCN%20Compartment.png" heigh="20">
  
-and then click <img src="https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/images/VCN_Start_Wizard.png" height="25">.
+and then click <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/VCN_Start_Wizard.png" height="25">.
 
  2. On the next page, select the following: 
     * VNC with Internet Connectivity --> Start VCN Wizard
@@ -35,13 +35,13 @@ and then click <img src="https://github.com/oci-hpc/oci-hpc-runbook-parabricks/b
 
 ### Compute Instance
 
- 1. Create a new instance by selecting the menu <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/menu.png" height="20"> on the top left, then select Marketplace.
+ 1. Create a new instance by selecting the menu <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/menu.png" height="20"> on the top left, then select Marketplace.
 
-    <img src="https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/images/Marketplace.png" height="200">
+    <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/Marketplace.png" height="200">
 
- 2. On the next page, type GPU into the search bar and select NVIDIA GPU Cloud Machine Image <img src="https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/images/GPU%20Search%20Bar.png" height="300">. 
+ 2. On the next page, type GPU into the search bar and select NVIDIA GPU Cloud Machine Image <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/GPU%20Search%20Bar.png" height="300">. 
 
- 3. Once you selected the image, choose the version `20190403001` and the compartment where you'd like to launch the instance. Once you're done click <img src="https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/images/Launch%20instance.png" height="100">
+ 3. Once you selected the image, choose the version `20190403001` and the compartment where you'd like to launch the instance. Once you're done click <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/Launch%20instance.png" height="100">
  
  4. Fill out the following information on this page
     * Name of your instance.
@@ -54,15 +54,15 @@ and then click <img src="https://github.com/oci-hpc/oci-hpc-runbook-parabricks/b
     * Virtual Cloud Network: Select the network that you previously created.
     * SSH key: Attach your public key file. For more information, click [here](https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/creatingkeys.htm).
 
- 4. Click <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/create.png" height="25">.
+ 4. Click <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/create.png" height="25">.
 
  5. After a few minutes, the instances will turn green, meaning it is up and running. Click on the instance name in the console to identify the public IP. You can now connect using `ssh ubuntu@xx.xx.xx.xx` from the machine using the key that was provided during the creation. 
 
 ### Block Storage
 
- 1. Create a new Block Volume by selecting the menu <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/menu.png" height="20"> on the top left, then select Block Storage --> Block Volumes.
+ 1. Create a new Block Volume by selecting the menu <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/menu.png" height="20"> on the top left, then select Block Storage --> Block Volumes.
 
- 2. Click <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/create_bv.png" height="25">.
+ 2. Click <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/create_bv.png" height="25">.
 
  3. On the next page, select the following: 
      * Name
@@ -70,30 +70,30 @@ and then click <img src="https://github.com/oci-hpc/oci-hpc-runbook-parabricks/b
      * Size (in GB)
      * Availability Domain: Make sure to select the same as your Compute Instance. 
 
- 4. Click <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/create_bv.png" height="25">.
+ 4. Click <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/create_bv.png" height="25">.
 
- 5. Select the menu <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/menu.png" height="20"> on the top left, then select Compute and Instances.
+ 5. Select the menu <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/menu.png" height="20"> on the top left, then select Compute and Instances.
 
  6. Click on the instance to which the drive will be attached.
 
  7. On the lower left, in the Resources menu, click on "Attached Block Volumes".
 
-    <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/resources.png" height="200">
+    <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/resources.png" height="200">
 
- 8. Click <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/attach_BV.png" height="25">
+ 8. Click <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/attach_BV.png" height="25">
 
  9. All the default settings will work fine. Select the Block Volume that was just created and specify `/dev/oracleoci/oraclevdb` as the device path. 
-  Click <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/attach.png" height="25">.
+  Click <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/attach.png" height="25">.
 
     **Note: If you do not see the Block Volume, it may be because you did not place it in the same AD as your running instance**
 
  10. Once it is attached, hit the 3 dots at the far right of the Block Volume description and select "iSCSi Commands and Information". 
 
-     <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/ISCSi.png" height="150">
+     <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/ISCSi.png" height="150">
 
  11. Copy and execute the commands in your instance to attach the block volume.
 
-     <img src="https://github.com/oci-hpc/oci-hpc-runbook-gromacs/blob/master/images/iscsi_commands.png" height="200">
+     <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/iscsi_commands.png" height="200">
 
 
 ### Mounting a Block Storage or NVME SSD Drive
