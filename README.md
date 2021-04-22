@@ -1,4 +1,4 @@
-# <img src="https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/images/Parabricks%20Logo.png" width="200" height="200"> Runbook
+# <img src="https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/Parabricks%20Logo.png" width="200" height="200"> Runbook
 
 # Introduction
 This Runbook provides the steps to deploy a GPU machine on Oracle Cloud Infrastructure, install Parabricks, and run a benchmark using Parabricks software.
@@ -11,7 +11,7 @@ Parabricks supports running on GPU's and supports parallel processing. It began 
 The architecture for this runbook is simple, a single machine running inside of an OCI VCN with a public subnet.
 Since a GPU instance is used, block storage is attached to the instance and installed with the Parabricks application and sample/reference data. The instance is located in a public subnet and assigned a public ip, which can be accessed via ssh. 
 
-![](https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/images/OCI%20Architecture.png)
+![](https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/OCI%20Architecture.png)
 
 # Login
 Login to the instance using `ubuntu` as a username:
@@ -31,7 +31,7 @@ Please obtain a Parabricks license [here](https://developer.nvidia.com/clara-par
 # Running the Application
 If the provided terraform scripts are used to launch the application, Parabricks is installed in the `/mnt/block/parabricks` folder and the example benchmarking model is available in the `/mnt/block/parabricks_assets/data` folder. The following scripts run the germline pipleine, the architecture shown below. 
 
-![](https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/images/Germline%20Pipeline%20Architecture.png)
+![](https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/Germline%20Pipeline%20Architecture.png)
 
 Run Parabricks germline pipeline on OCI GPU shapes via the following command (Suggestion: Make a separate folder called `/mnt/block/results` to run command inside):
 
@@ -56,13 +56,13 @@ Once the benchmark is complete, go to the `.txt` file you wrote the output to. T
 - Marking Duplicates, BQSR 
 - HaplotypeCaller
 
-If you'd like to automate this pipeline, please refer to the [automation script](https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/Resources/germline_automation.sh). 
+If you'd like to automate this pipeline, please refer to the [automation script](https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/Resources/germline_automation.sh). 
 
 `scp myfile.txt {username}\@{public-ip-address}:/remote/folder/`
 
-To write out to Object Storage, please add your PRE-AUTHENTICATED REQUEST URL for your Object Storage bucket in line 14 of the automation script. To see how to create an Object Storage bucket, refer [here](https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/Documentation/ResourceManager.md#add-parabricks-installer-to-object-storage).
+To write out to Object Storage, please add your PRE-AUTHENTICATED REQUEST URL for your Object Storage bucket in line 14 of the automation script. To see how to create an Object Storage bucket, refer [here](https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/Documentation/ResourceManager.md#add-parabricks-installer-to-object-storage).
 
 # Benchmark Example
 This is the performance comparison between BM.GPU4.8(A100), BM.GPU3.8(V100), and VM.GPU3.4(V100). The sample data (48G and 49G) used in this benchmark was [NA12878](https://www.ebi.ac.uk/ena/browser/view/ERR194147) from ILLUMINA.
 
-![](https://github.com/oci-hpc/oci-hpc-runbook-parabricks/blob/main/images/A100%20vs%20V100%20on%20OCI.png)
+![](https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/A100%20vs%20V100%20on%20OCI.png)
