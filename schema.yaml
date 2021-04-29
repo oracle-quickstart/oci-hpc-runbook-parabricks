@@ -1,0 +1,164 @@
+title: "Deploy Parabricks on GPU machine in OCI"
+description: "Deploy a GPU machine on Oracle Cloud Infrastructure, install Parabricks, and run a benchmark using Parabricks software. "
+schemaVersion: 1.1.0
+version: "20190304"
+locale: "en"
+
+variableGroups:
+- title: "General Configuration"
+  visible: false
+  variables:
+  - tenancy_ocid
+  - region
+  - release
+  - gpu_node_count
+
+- title: "Required Configuration"
+  visible: true  
+  variables:
+  - compartment_ocid
+  - availablity_domain_name
+  - gpu_shape
+  - show_advanced
+
+- title: "Compute Optional Configuration"
+  visible: 
+      and:
+        - show_advanced
+  variables:
+  - ssh_public_key
+  - size_block_volume
+
+- title: "Network Optional Configuration"
+  visible: 
+      and:
+        - show_advanced
+  variables:
+  - VCN-CIDR
+  - Subnet-CIDR
+
+- title: "Parabricks Optional Configuration"
+  visible: 
+      and:
+        - show_advanced
+  variables:
+  - parabricks_assets
+  - parabricks_license
+
+- title: "Hidden"
+  visible: false
+  variables:
+  - NVIDIA_GPU_Cloud_Machine_Image
+  - devicePath
+  - block_nfs
+  - model_drive
+
+variables:
+
+  show_advanced:
+    type: boolean
+    title: "Show advanced options?"
+    description: "Shows advanced options."
+    visible: true
+    default: false
+
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    required: true
+    visibile: true
+    title: Compartment
+    description: "Compartment where you want to create the solution resources"
+  
+  availablity_domain_name:
+    type: oci:identity:availabilitydomain:name
+    required: true
+    visibile: true
+    title: "Availability Domain to be chosen"
+    description: "Choose Availability Domain where your infrastructure will be deployed."
+    dependsOn:
+      regionName: ${region}
+      compartmentId: ${compartment_ocid}
+  
+  gpu_shape:
+    type: enum
+    enum:
+    - "VM.GPU2.1"
+    - "BM.GPU2.2"
+    - "VM.GPU3.1"
+    - "VM.GPU3.2"
+    - "VM.GPU3.4"
+    - "BM.GPU3.8"
+    title: "Shape of the GPU Compute Node"
+    default: "BM.GPU3.8"
+    required: true
+
+  gpu_node_count:
+    type: integer
+    minimum: 1
+    maximum: 128
+    multipleOf: 1
+    default: 1
+    title: "GPU Node Count"
+    required: true
+
+  ssh_public_key:
+    type: oci:core:ssh:publickey
+    title: "Public SSH Key"
+    description: "Choose public SSH Key to be uploaded into compute instances."
+    required: false
+
+  VCN-CIDR:
+    type: string
+    required: false
+    default: "10.0.0.0/16"
+    pattern: "^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\/(3[0-2]|[1-2]?[0-9])$"
+    description: "VCN CIDR block where you want to create the solution resources."
+
+  Subnet-CIDR:
+    type: string
+    required: false
+    default: "10.0.0.0/24"
+    pattern: "^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\/(3[0-2]|[1-2]?[0-9])$"
+    description: "Private subnet's CIDR block where you want to place your GPU machines."
+
+  size_block_volume:
+    type: integer
+    title: "Block Volume Size (GB)"
+    description: "Choose Block Volume size (1000 to 32,768 GB)"
+    minimum: 1000
+    maximum: 32768
+    multipleOf: 1
+    default: 1000
+    required: true
+
+  parabricks_license:
+    type: string
+    title: "URL to download Parabricks"
+    description: "Replace url or leave blank if you wish to download later"
+    required: false
+      
+  parabricks_assets:
+    type: string
+    title: "URL to download Parabricks assets"
+    description: "Replace url or leave blank if you wish to download later"
+    required: false
+
+outputs:
+
+  Private_key:
+    title: "Generated SSH Private Key"
+    displayText: "Generated SSH Private Key"
+    type: copyableString
+    visible: true
+
+  HeadNodesPublicIPs:
+    title: "HeadNodes Public IPs"
+    displayText: "HeadNode Public IPs"
+    type: string
+    visible: true
+
+  HeadNodesPrivateIPs:
+    title: "HeadNodes Private IPs"
+    displayText: "HeadNodes Private IPs"
+    type: string
+    visible: true

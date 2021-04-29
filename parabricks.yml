@@ -1,0 +1,7 @@
+- hosts: compute
+  tasks:
+  - name: Install Parabricks
+    command: sudo ./installer.py
+    args:
+      chdir: /mnt/block/parabricks
+    
