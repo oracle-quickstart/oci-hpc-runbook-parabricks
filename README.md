@@ -19,7 +19,7 @@ Login to the instance using `ubuntu` as a username:
    
 Note that if you are using resource manager, obtain the private key from the output and save on your local machine.
 
-## Prerequisites
+# Prerequisites
 
 - Permission to `manage` the following types of resources in your Oracle Cloud Infrastructure tenancy: `vcns`, `internet-gateways`, `route-tables`, `security-lists`, `subnets`, and `instances`.
 
