@@ -9,7 +9,7 @@ resource "oci_identity_tag_namespace" "ArchitectureCenterTagNamespace" {
     provider = oci.homeregion
     compartment_id = var.compartment_ocid
     description = "ArchitectureCenterTagNamespace"
-    name = "ArchitectureCenter\\oci-hpc-runbook-parabricks-${random_id.tag.hex}"
+    name = "ArchitectureCenter\\deploy-genomics-framework-${random_id.tag.hex}"
   
     provisioner "local-exec" {
        command = "sleep 10"

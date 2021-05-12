@@ -8,9 +8,14 @@ Parabricks is a computational framework supporting genomics applications from DN
 Parabricks supports running on GPU's and supports parallel processing. It began as an Ann Arbor, Michigan-based startup and is now part of the NVIDIA Healthcare team. More information can be found [here](https://www.nvidia.com/en-us/healthcare/clara-parabricks/). 
 
 # Architecture
+
 The architecture for this runbook is simple, a single machine running inside of an OCI VCN with a public subnet. Since a GPU instance is used, block storage is attached to the instance and installed with the Parabricks application and sample/reference data. The instance is located in a public subnet and assigned a public ip, which can be accessed via ssh. 
 
-![](https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/OCI%20Architecture.png)
+For details of the architecture, see [_Deploy genomics applications framework and NVIDIA Clara Parabricks_](https://docs.oracle.com/en/solutions/deploy-genomics-framework/index.html)
+
+## Architecture Diagram
+
+![](./images/OCI%20Architecture.png)
 
 # Login
 Login to the instance using `ubuntu` as a username:
@@ -139,3 +144,7 @@ To write out to Object Storage, please add your PRE-AUTHENTICATED REQUEST URL fo
 This is the performance comparison between BM.GPU4.8(A100), BM.GPU3.8(V100), and VM.GPU3.4(V100). The sample data (48G and 49G) used in this benchmark was [NA12878](https://www.ebi.ac.uk/ena/browser/view/ERR194147) from ILLUMINA.
 
 ![](https://github.com/oracle-quickstart/oci-hpc-runbook-parabricks/blob/main/images/A100%20vs%20V100%20on%20OCI.png)
+
+
+
+
