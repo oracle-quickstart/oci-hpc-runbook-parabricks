@@ -88,6 +88,7 @@ variables:
     - "VM.GPU3.2"
     - "VM.GPU3.4"
     - "BM.GPU3.8"
+    - "BM.GPU4.8"
     title: "Shape of the GPU Compute Node"
     default: "BM.GPU3.8"
     required: true
